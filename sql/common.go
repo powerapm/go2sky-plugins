@@ -24,7 +24,8 @@ import (
 	"strings"
 
 	"github.com/powerapm/go2sky"
-	agentv3 "github.com/powerapm/go2sky/reporter/grpc/language-agent-v2"
+	agentv2 "github.com/powerapm/go2sky/reporter/grpc/common"
+	// agentv2 "skywalking.apache.org/repo/goapi/collect/language/agent/v3"
 )
 
 const (
@@ -53,7 +54,7 @@ func createSpan(ctx context.Context, tracer *go2sky.Tracer, opts *options, opera
 	}
 	s.SetPeer(opts.peer)
 	s.SetComponent(opts.componentID)
-	s.SetSpanLayer(agentv3.SpanLayer_Database)
+	s.SetSpanLayer(agentv2.SpanLayer_Database)
 	s.Tag(go2sky.TagDBType, string(opts.dbType))
 	s.Tag(go2sky.TagDBInstance, opts.peer)
 	return s, nil

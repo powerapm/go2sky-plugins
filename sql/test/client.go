@@ -25,17 +25,17 @@ import (
 	sqlPlugin "github.com/powerapm/go2sky-plugins/sql"
 	httpplugin "github.com/powerapm/go2sky/plugins/http"
 
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/powerapm/go2sky"
 	"github.com/powerapm/go2sky/reporter"
-	_ "github.com/go-sql-driver/mysql"
 )
 
 type testFunc func(context.Context, *sqlPlugin.DB) error
 
 const (
-	oap     = "mockoap:19876"
+	oap     = "172.18.40.193:11800"
 	service = "sql-client"
-	dsn     = "user:password@tcp(mysql:3306)/database"
+	dsn     = "pcloud:pcloud@tcp(172.18.40.195:3306)/power_adm"
 	addr    = ":8080"
 )
 
@@ -55,6 +55,7 @@ func main() {
 	db, err := sqlPlugin.Open("mysql", dsn, tracer,
 		sqlPlugin.WithSQLDBType(sqlPlugin.MYSQL),
 		sqlPlugin.WithQueryReport(),
+		sqlPlugin.WithParamReport(),
 	)
 	if err != nil {
 		log.Fatalf("open db error: %v \n", err)
