@@ -1,8 +1,8 @@
 # go2sky-plugins
 
-[![Build](https://github.com/SkyAPM/go2sky-plugins/workflows/Build/badge.svg?branch=master)](https://github.com/SkyAPM/go2sky-plugins/actions?query=branch%3Amaster+event%3Apush+workflow%3ABuild)
+[![Build](https://github.com/powerapm/go2sky-plugins/workflows/Build/badge.svg?branch=master)](https://github.com/powerapm/go2sky-plugins/actions?query=branch%3Amaster+event%3Apush+workflow%3ABuild)
 
-The plugins of [go2sky](https://github.com/SkyAPM/go2sky)
+The plugins of [go2sky](https://github.com/powerapm/go2sky)
 
 ## Plugin Summary
 
@@ -30,7 +30,7 @@ The plugins of [go2sky](https://github.com/SkyAPM/go2sky)
 
 # Contact Us
 * Twitter, [ASFSkyWalking](https://twitter.com/ASFSkyWalking)
-* Report an issue to [go2sky repository](https://github.com/SkyAPM/go2sky/issues)
+* Report an issue to [go2sky repository](https://github.com/powerapm/go2sky/issues)
 * Send `Request to join SkyWalking slack` mail to the mail list(`dev@skywalking.apache.org`), we will invite you in. Notice, this repository is not a part of the Apache Software Foundation. 
 
 # License

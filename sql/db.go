@@ -22,7 +22,7 @@ import (
 	"database/sql/driver"
 	"time"
 
-	"github.com/SkyAPM/go2sky"
+	"github.com/powerapm/go2sky"
 )
 
 // DB wrap sql.DB and support trace

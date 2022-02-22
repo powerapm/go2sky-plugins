@@ -19,8 +19,8 @@ package resty
 import (
 	"log"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/plugins/http"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/plugins/http"
 	"github.com/go-resty/resty/v2"
 )
 

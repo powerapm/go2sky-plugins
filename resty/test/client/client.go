@@ -20,10 +20,10 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/SkyAPM/go2sky"
-	restyplugin "github.com/SkyAPM/go2sky-plugins/resty"
-	httpPlugin "github.com/SkyAPM/go2sky/plugins/http"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	restyplugin "github.com/powerapm/go2sky-plugins/resty"
+	httpPlugin "github.com/powerapm/go2sky/plugins/http"
+	"github.com/powerapm/go2sky/reporter"
 )
 
 const (

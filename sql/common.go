@@ -23,8 +23,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/SkyAPM/go2sky"
-	agentv3 "skywalking.apache.org/repo/goapi/collect/language/agent/v3"
+	"github.com/powerapm/go2sky"
+	agentv3 "github.com/powerapm/go2sky/reporter/grpc/language-agent-v2"
 )
 
 const (

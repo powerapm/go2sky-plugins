@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-go get -u github.com/SkyAPM/go2sky-plugins/go-restful
+go get -u github.com/powerapm/go2sky-plugins/go-restful
 ```
 
 ## Usage
@@ -14,9 +14,9 @@ import (
     "io"
 	"log"
 
-    "github.com/SkyAPM/go2sky"
-    tracerestful "github.com/SkyAPM/go2sky-plugins/go-restful"
-    "github.com/SkyAPM/go2sky/reporter"
+    "github.com/powerapm/go2sky"
+    tracerestful "github.com/powerapm/go2sky-plugins/go-restful"
+    "github.com/powerapm/go2sky/reporter"
     "github.com/emicklei/go-restful/v3"
 )
 

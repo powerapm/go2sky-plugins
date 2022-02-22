@@ -20,11 +20,11 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/reporter"
 	"github.com/gin-gonic/gin"
 
-	ginplugin "github.com/SkyAPM/go2sky-plugins/gin/v2"
+	ginplugin "github.com/powerapm/go2sky-plugins/gin/v2"
 )
 
 const (

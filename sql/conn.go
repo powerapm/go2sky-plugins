@@ -21,7 +21,7 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/SkyAPM/go2sky"
+	"github.com/powerapm/go2sky"
 )
 
 // Conn wrap sql.Conn and support trace

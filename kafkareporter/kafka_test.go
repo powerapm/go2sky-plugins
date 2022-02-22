@@ -25,11 +25,11 @@ import (
 
 	"github.com/Shopify/sarama"
 	"github.com/Shopify/sarama/mocks"
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/propagation"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/propagation"
 	"google.golang.org/protobuf/proto"
 	commonv3 "skywalking.apache.org/repo/goapi/collect/common/v3"
-	agentv3 "skywalking.apache.org/repo/goapi/collect/language/agent/v3"
+	agentv3 "github.com/powerapm/go2sky/reporter/grpc/language-agent-v2"
 	managementv3 "skywalking.apache.org/repo/goapi/collect/management/v3"
 )
 

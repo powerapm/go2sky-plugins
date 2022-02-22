@@ -18,7 +18,7 @@ package zap_test
 import (
 	"context"
 
-	zapplugin "github.com/SkyAPM/go2sky-plugins/zap"
+	zapplugin "github.com/powerapm/go2sky-plugins/zap"
 	"go.uber.org/zap"
 )
 

@@ -20,11 +20,11 @@ import (
 	"context"
 	"log"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/reporter"
 	microv3 "github.com/asim/go-micro/v3"
 
-	microv3plugin "github.com/SkyAPM/go2sky-plugins/micro"
+	microv3plugin "github.com/powerapm/go2sky-plugins/micro"
 )
 
 const (

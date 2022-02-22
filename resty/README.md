@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-go get -u github.com/SkyAPM/go2sky-plugins/resty
+go get -u github.com/powerapm/go2sky-plugins/resty
 ```
 
 ## Usage
@@ -13,9 +13,9 @@ package main
 import (
 	"log"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky-plugins/resty"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky-plugins/resty"
+	"github.com/powerapm/go2sky/reporter"
 )
 
 func main() {

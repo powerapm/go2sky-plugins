@@ -21,9 +21,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/SkyAPM/go2sky"
+	"github.com/powerapm/go2sky"
 	"github.com/emicklei/go-restful/v3"
-	agentv3 "skywalking.apache.org/repo/goapi/collect/language/agent/v3"
+	agentv3 "github.com/powerapm/go2sky/reporter/grpc/language-agent-v2"
 )
 
 const componentIDGOHttpServer = 5004

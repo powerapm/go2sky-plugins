@@ -20,9 +20,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/SkyAPM/go2sky"
-	gear_plugin "github.com/SkyAPM/go2sky-plugins/gear"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	gear_plugin "github.com/powerapm/go2sky-plugins/gear"
+	"github.com/powerapm/go2sky/reporter"
 	"github.com/teambition/gear"
 )
 

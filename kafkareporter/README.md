@@ -3,7 +3,7 @@
 ## Installation
 
 ```go
-go get -u github.com/SkyAPM/go2sky-plugins/kafkareporter
+go get -u github.com/powerapm/go2sky-plugins/kafkareporter
 ```
 
 ## Usage

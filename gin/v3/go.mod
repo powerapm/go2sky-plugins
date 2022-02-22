@@ -1,9 +1,9 @@
-module github.com/SkyAPM/go2sky-plugins/gin/v3
+module github.com/powerapm/go2sky-plugins/gin/v3
 
 go 1.12
 
 require (
-	github.com/SkyAPM/go2sky v1.4.0
+	github.com/powerapm/go2sky v1.4.0
 	github.com/gin-gonic/gin v1.5.0
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/mattn/go-isatty v0.0.12 // indirect

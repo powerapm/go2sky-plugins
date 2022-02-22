@@ -23,9 +23,9 @@ import (
 	"net/http/httptest"
 	"time"
 
-	"github.com/SkyAPM/go2sky"
-	httpPlugin "github.com/SkyAPM/go2sky/plugins/http"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	httpPlugin "github.com/powerapm/go2sky/plugins/http"
+	"github.com/powerapm/go2sky/reporter"
 )
 
 func ExampleNewGoResty() {

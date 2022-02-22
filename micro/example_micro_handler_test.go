@@ -22,8 +22,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/reporter"
 	microv3 "github.com/asim/go-micro/v3"
 	"github.com/asim/go-micro/v3/client"
 	"github.com/asim/go-micro/v3/logger"

@@ -20,7 +20,7 @@ import (
 	"context"
 	"os"
 
-	"github.com/SkyAPM/go2sky"
+	"github.com/powerapm/go2sky"
 	"github.com/sirupsen/logrus"
 )
 

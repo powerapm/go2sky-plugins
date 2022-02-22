@@ -3,17 +3,17 @@
 ## Installation
 
 ```bash
-go get -u github.com/SkyAPM/go2sky-plugins/sql
+go get -u github.com/powerapm/go2sky-plugins/sql
 ```
 
 ## Usage
 
 ```go
 import (
-	sqlPlugin "github.com/SkyAPM/go2sky-plugins/sql"
+	sqlPlugin "github.com/powerapm/go2sky-plugins/sql"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/reporter"
 	_ "github.com/go-sql-driver/mysql"
 )
 

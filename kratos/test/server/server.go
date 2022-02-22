@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/SkyAPM/go2sky"
-	kratosplugin "github.com/SkyAPM/go2sky-plugins/kratos"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	kratosplugin "github.com/powerapm/go2sky-plugins/kratos"
+	"github.com/powerapm/go2sky/reporter"
 	"github.com/go-kratos/kratos/examples/helloworld/helloworld"
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/log"

@@ -17,7 +17,7 @@
 package logrus
 
 import (
-	"github.com/SkyAPM/go2sky/log"
+	"github.com/powerapm/go2sky/log"
 	"github.com/sirupsen/logrus"
 )
 

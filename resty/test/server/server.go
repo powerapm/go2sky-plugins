@@ -20,9 +20,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/SkyAPM/go2sky"
-	httpplugin "github.com/SkyAPM/go2sky/plugins/http"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	httpplugin "github.com/powerapm/go2sky/plugins/http"
+	"github.com/powerapm/go2sky/reporter"
 )
 
 const (

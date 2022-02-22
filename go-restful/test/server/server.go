@@ -21,9 +21,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/SkyAPM/go2sky"
-	go_restfile_plugin "github.com/SkyAPM/go2sky-plugins/go-restful"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	go_restfile_plugin "github.com/powerapm/go2sky-plugins/go-restful"
+	"github.com/powerapm/go2sky/reporter"
 
 	"github.com/emicklei/go-restful/v3"
 )

@@ -23,12 +23,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/SkyAPM/go2sky"
+	"github.com/powerapm/go2sky"
 	"github.com/asim/go-micro/v3/client"
 	"github.com/asim/go-micro/v3/metadata"
 	"github.com/asim/go-micro/v3/registry"
 	"github.com/asim/go-micro/v3/server"
-	agentv3 "skywalking.apache.org/repo/goapi/collect/language/agent/v3"
+	agentv3 "github.com/powerapm/go2sky/reporter/grpc/language-agent-v2"
 )
 
 const (

@@ -17,7 +17,7 @@
 package zap
 
 import (
-	"github.com/SkyAPM/go2sky/log"
+	"github.com/powerapm/go2sky/log"
 	"go.uber.org/zap"
 	"golang.org/x/net/context"
 )

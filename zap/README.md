@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-go get -u github.com/SkyAPM/go2sky-plugins/zap
+go get -u github.com/powerapm/go2sky-plugins/zap
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ package main
 import (
 	"context"
 	
-	zapplugin "github.com/SkyAPM/go2sky-plugins/zap"
+	zapplugin "github.com/powerapm/go2sky-plugins/zap"
 	"go.uber.org/zap"
 )
 

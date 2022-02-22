@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-go get -u github.com/SkyAPM/go2sky
+go get -u github.com/powerapm/go2sky
 ```
 
 ## Usage
@@ -15,9 +15,9 @@ package main
 import (
 	"log"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/plugins/http"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/plugins/http"
+	"github.com/powerapm/go2sky/reporter"
 )
 
 func main() {
@@ -49,9 +49,9 @@ package main
 import (
 	"log"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/plugins/http"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/plugins/http"
+	"github.com/powerapm/go2sky/reporter"
 )
 
 func main() {
@@ -75,4 +75,4 @@ func main() {
 }
 ```
 
-[See more](https://github.com/SkyAPM/go2sky/blob/master/plugins/http/example_http_test.go)
+[See more](https://github.com/powerapm/go2sky/blob/master/plugins/http/example_http_test.go)

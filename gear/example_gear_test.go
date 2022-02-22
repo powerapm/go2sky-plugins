@@ -23,9 +23,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/SkyAPM/go2sky"
-	h "github.com/SkyAPM/go2sky/plugins/http"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	h "github.com/powerapm/go2sky/plugins/http"
+	"github.com/powerapm/go2sky/reporter"
 	"github.com/teambition/gear"
 )
 

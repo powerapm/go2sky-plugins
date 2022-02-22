@@ -3,17 +3,17 @@
 ## Installation
 
 ```bash
-go get -u github.com/SkyAPM/go2sky-plugins/gorm
+go get -u github.com/powerapm/go2sky-plugins/gorm
 ```
 
 ## Usage
 
 ```go
 import (
-	gormPlugin "github.com/SkyAPM/go2sky-plugins/gorm"
+	gormPlugin "github.com/powerapm/go2sky-plugins/gorm"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/reporter"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )

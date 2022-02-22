@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-go get -u github.com/SkyAPM/go2sky-plugins/gin/v3
+go get -u github.com/powerapm/go2sky-plugins/gin/v3
 ```
 
 ## Usage
@@ -13,9 +13,9 @@ package main
 import (
 	"log"
 
-	"github.com/SkyAPM/go2sky"
-	v3 "github.com/SkyAPM/go2sky-plugins/gin/v3"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	v3 "github.com/powerapm/go2sky-plugins/gin/v3"
+	"github.com/powerapm/go2sky/reporter"
 	"github.com/gin-gonic/gin"
 )
 

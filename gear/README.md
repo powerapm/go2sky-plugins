@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-go get -u github.com/SkyAPM/go2sky-plugins/gear
+go get -u github.com/powerapm/go2sky-plugins/gear
 ```
 
 ## Usage
@@ -13,9 +13,9 @@ package main
 import (
 	"log"
 
-	"github.com/SkyAPM/go2sky"
-	gearplugin "github.com/SkyAPM/go2sky-plugins/gear"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	gearplugin "github.com/powerapm/go2sky-plugins/gear"
+	"github.com/powerapm/go2sky/reporter"
 	"github.com/teambition/gear"
 )
 

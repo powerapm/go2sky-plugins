@@ -22,12 +22,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/SkyAPM/go2sky"
+	"github.com/powerapm/go2sky"
 
 	"dubbo.apache.org/dubbo-go/v3/common/extension"
 	"dubbo.apache.org/dubbo-go/v3/filter"
 	"dubbo.apache.org/dubbo-go/v3/protocol"
-	agentv3 "skywalking.apache.org/repo/goapi/collect/language/agent/v3"
+	agentv3 "github.com/powerapm/go2sky/reporter/grpc/language-agent-v2"
 )
 
 // side record the server or client

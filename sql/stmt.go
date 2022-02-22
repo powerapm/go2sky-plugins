@@ -21,7 +21,7 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/SkyAPM/go2sky"
+	"github.com/powerapm/go2sky"
 )
 
 // Stmt wrap sql.Stmt and support trace

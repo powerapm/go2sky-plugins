@@ -21,12 +21,12 @@ import (
 	_ "dubbo.apache.org/dubbo-go/v3/protocol/dubbo"
 	_ "dubbo.apache.org/dubbo-go/v3/registry/protocol"
 	_ "dubbo.apache.org/dubbo-go/v3/registry/zookeeper"
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/reporter"
 	hessian "github.com/apache/dubbo-go-hessian2"
 
-	dubbo_go "github.com/SkyAPM/go2sky-plugins/dubbo-go"
-	"github.com/SkyAPM/go2sky-plugins/dubbo-go/test/server/pkg"
+	dubbo_go "github.com/powerapm/go2sky-plugins/dubbo-go"
+	"github.com/powerapm/go2sky-plugins/dubbo-go/test/server/pkg"
 )
 
 // set dubbogo configs ...
@@ -66,12 +66,12 @@ import (
 	_ "dubbo.apache.org/dubbo-go/v3/protocol/dubbo"
 	_ "dubbo.apache.org/dubbo-go/v3/registry/protocol"
 	_ "dubbo.apache.org/dubbo-go/v3/registry/zookeeper"
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/reporter"
 	hessian "github.com/apache/dubbo-go-hessian2"
 
-	dubbo_go "github.com/SkyAPM/go2sky-plugins/dubbo-go"
-	"github.com/SkyAPM/go2sky-plugins/dubbo-go/test/client/pkg"
+	dubbo_go "github.com/powerapm/go2sky-plugins/dubbo-go"
+	"github.com/powerapm/go2sky-plugins/dubbo-go/test/client/pkg"
 )
 
 // set dubbogo configs ...

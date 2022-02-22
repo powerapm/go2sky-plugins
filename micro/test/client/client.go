@@ -21,14 +21,14 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/SkyAPM/go2sky"
-	httpplugin "github.com/SkyAPM/go2sky/plugins/http"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	httpplugin "github.com/powerapm/go2sky/plugins/http"
+	"github.com/powerapm/go2sky/reporter"
 	"github.com/asim/go-micro/v3/client"
 
 	microv3 "github.com/asim/go-micro/v3"
 
-	microv3plugin "github.com/SkyAPM/go2sky-plugins/micro"
+	microv3plugin "github.com/powerapm/go2sky-plugins/micro"
 )
 
 const (

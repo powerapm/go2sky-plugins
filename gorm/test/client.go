@@ -21,13 +21,13 @@ import (
 	"log"
 	"net/http"
 
-	gormPlugin "github.com/SkyAPM/go2sky-plugins/gorm"
-	httpPlugin "github.com/SkyAPM/go2sky/plugins/http"
+	gormPlugin "github.com/powerapm/go2sky-plugins/gorm"
+	httpPlugin "github.com/powerapm/go2sky/plugins/http"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/reporter"
 )
 
 type testFunc func(*gorm.DB) error

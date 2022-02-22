@@ -21,8 +21,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky-plugins/kafkareporter"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky-plugins/kafkareporter"
 )
 
 const (

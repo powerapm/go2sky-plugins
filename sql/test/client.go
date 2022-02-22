@@ -22,11 +22,11 @@ import (
 	"log"
 	"net/http"
 
-	sqlPlugin "github.com/SkyAPM/go2sky-plugins/sql"
-	httpplugin "github.com/SkyAPM/go2sky/plugins/http"
+	sqlPlugin "github.com/powerapm/go2sky-plugins/sql"
+	httpplugin "github.com/powerapm/go2sky/plugins/http"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/reporter"
 	_ "github.com/go-sql-driver/mysql"
 )
 

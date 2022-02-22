@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-go get -u github.com/SkyAPM/go2sky-plugins/logrus
+go get -u github.com/powerapm/go2sky-plugins/logrus
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ package main
 import (
 	"context"
 	"github.com/sirupsen/logrus"
-	logrusplugin "github.com/SkyAPM/go2sky-plugins/logrus"
+	logrusplugin "github.com/powerapm/go2sky-plugins/logrus"
 )
 
 func main() {
