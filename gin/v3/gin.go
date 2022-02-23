@@ -23,9 +23,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/powerapm/go2sky"
 	"github.com/gin-gonic/gin"
-	agentv3 "github.com/powerapm/go2sky/reporter/grpc/language-agent-v2"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/propagation"
+	agentv2 "github.com/powerapm/go2sky/reporter/grpc/common"
 )
 
 const componentIDGINHttpServer = 5006
@@ -39,8 +40,11 @@ func Middleware(engine *gin.Engine, tracer *go2sky.Tracer) gin.HandlerFunc {
 	}
 
 	return func(c *gin.Context) {
-		span, ctx, err := tracer.CreateEntrySpan(c.Request.Context(), getOperationName(c), func(key string) (string, error) {
-			return c.Request.Header.Get(key), nil
+		// span, ctx, err := tracer.CreateEntrySpan(c.Request.Context(), getOperationName(c), func(key string) (string, error) {
+		// 	return c.Request.Header.Get(key), nil
+		// })
+		span, ctx, err := tracer.CreateEntrySpan(c.Request.Context(), getOperationName(c), func() (string, error) {
+			return c.Request.Header.Get(propagation.Header), nil
 		})
 		if err != nil {
 			c.Next()
@@ -49,7 +53,7 @@ func Middleware(engine *gin.Engine, tracer *go2sky.Tracer) gin.HandlerFunc {
 		span.SetComponent(componentIDGINHttpServer)
 		span.Tag(go2sky.TagHTTPMethod, c.Request.Method)
 		span.Tag(go2sky.TagURL, c.Request.Host+c.Request.URL.Path)
-		span.SetSpanLayer(agentv3.SpanLayer_Http)
+		span.SetSpanLayer(agentv2.SpanLayer_Http)
 
 		c.Request = c.Request.WithContext(ctx)
 
