@@ -19,9 +19,9 @@ package resty
 import (
 	"log"
 
+	"github.com/go-resty/resty/v2"
 	"github.com/powerapm/go2sky"
 	"github.com/powerapm/go2sky/plugins/http"
-	"github.com/go-resty/resty/v2"
 )
 
 // NewGoResty returns a resty Client with tracer

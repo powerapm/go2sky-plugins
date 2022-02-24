@@ -23,10 +23,10 @@ import (
 	"sync"
 	"time"
 
+	"github.com/emicklei/go-restful/v3"
 	"github.com/powerapm/go2sky"
 	h "github.com/powerapm/go2sky/plugins/http"
 	"github.com/powerapm/go2sky/reporter"
-	"github.com/emicklei/go-restful/v3"
 )
 
 func ExampleFilterFunction() {

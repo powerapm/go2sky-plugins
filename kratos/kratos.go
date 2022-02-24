@@ -21,12 +21,13 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/powerapm/go2sky"
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/metadata"
 	"github.com/go-kratos/kratos/v2/middleware"
 	"github.com/go-kratos/kratos/v2/transport"
-	agentv3 "github.com/powerapm/go2sky/reporter/grpc/language-agent-v2"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/propagation"
+	commonv2 "github.com/powerapm/go2sky/reporter/grpc/common"
 )
 
 const (
@@ -57,8 +58,8 @@ func Server(tracer *go2sky.Tracer, opts ...Option) middleware.Middleware {
 	return func(handler middleware.Handler) middleware.Handler {
 		return func(ctx context.Context, req interface{}) (interface{}, error) {
 			if tr, ok := transport.FromServerContext(ctx); ok {
-				span, ctx, err := tracer.CreateEntrySpan(ctx, tr.Operation(), func(key string) (string, error) {
-					return tr.RequestHeader().Get(key), nil
+				span, ctx, err := tracer.CreateEntrySpan(ctx, tr.Operation(), func() (string, error) {
+					return tr.RequestHeader().Get(propagation.Header), nil
 				})
 				if err != nil {
 					return nil, err
@@ -66,7 +67,7 @@ func Server(tracer *go2sky.Tracer, opts ...Option) middleware.Middleware {
 				defer func() { span.End() }()
 
 				span.SetComponent(componentIDKratos)
-				span.SetSpanLayer(agentv3.SpanLayer_RPCFramework)
+				span.SetSpanLayer(commonv2.SpanLayer_RPCFramework)
 
 				if md, ok := metadata.FromServerContext(ctx); ok {
 					for _, k := range options.reportTags {
@@ -98,8 +99,8 @@ func Client(tracer *go2sky.Tracer, opts ...Option) middleware.Middleware {
 	return func(handler middleware.Handler) middleware.Handler {
 		return func(ctx context.Context, req interface{}) (interface{}, error) {
 			if tr, ok := transport.FromClientContext(ctx); ok {
-				span, ctx, err := tracer.CreateExitSpanWithContext(ctx, tr.Operation(), tr.Endpoint(), func(key, value string) error {
-					tr.RequestHeader().Set(key, value)
+				span, ctx, err := tracer.CreateExitSpanWithContext(ctx, tr.Operation(), tr.Endpoint(), func(value string) error {
+					tr.RequestHeader().Set(propagation.Header, value)
 					return nil
 				})
 				if err != nil {
@@ -108,7 +109,7 @@ func Client(tracer *go2sky.Tracer, opts ...Option) middleware.Middleware {
 				defer func() { span.End() }()
 
 				span.SetComponent(componentIDKratos)
-				span.SetSpanLayer(agentv3.SpanLayer_RPCFramework)
+				span.SetSpanLayer(commonv2.SpanLayer_RPCFramework)
 
 				if md, ok := metadata.FromClientContext(ctx); ok {
 					for _, k := range options.reportTags {

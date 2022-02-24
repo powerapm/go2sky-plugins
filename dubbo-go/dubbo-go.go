@@ -27,7 +27,8 @@ import (
 	"dubbo.apache.org/dubbo-go/v3/common/extension"
 	"dubbo.apache.org/dubbo-go/v3/filter"
 	"dubbo.apache.org/dubbo-go/v3/protocol"
-	agentv3 "github.com/powerapm/go2sky/reporter/grpc/language-agent-v2"
+	"github.com/powerapm/go2sky/propagation"
+	agentv2 "github.com/powerapm/go2sky/reporter/grpc/common"
 )
 
 // side record the server or client
@@ -124,16 +125,25 @@ func (cf tracingFilter) Invoke(ctx context.Context, invoker protocol.Invoker, in
 	var span go2sky.Span
 
 	if cf.side == clientSide {
-		span, _ = cf.tracer.CreateExitSpan(ctx, operationName, invoker.GetURL().Location, func(key, value string) error {
-			invocation.SetAttachments(key, value)
+		// span, _ = cf.tracer.CreateExitSpan(ctx, operationName, invoker.GetURL().Location, func(key, value string) error {
+		// 	invocation.SetAttachments(key, value)
+		// 	return nil
+		// })
+		// 修改为v2协议的处理方式，另外invocation.SetAttachments和invocation.AttachmentsByKey是dubbo-go/v3@v3.0.0-rc2的，现在改成dubbo-go/v3@v3.0.1
+		span, _ = cf.tracer.CreateExitSpan(ctx, operationName, invoker.GetURL().Location, func(value string) error {
+			invocation.SetAttachment(propagation.Header, value)
 			return nil
 		})
 
 		span.SetComponent(componentID)
 	} else {
 		// componentIDGo2SkyServer
-		span, ctx, _ = cf.tracer.CreateEntrySpan(ctx, operationName, func(key string) (string, error) {
-			return invocation.AttachmentsByKey(key, ""), nil
+		// span, ctx, _ = cf.tracer.CreateEntrySpan(ctx, operationName, func(key string) (string, error) {
+		// 	return invocation.AttachmentsByKey(key, ""), nil
+		// })
+		//修改为v2协议的处理方式，另外invocation.SetAttachments和invocation.AttachmentsByKey是dubbo-go/v3@v3.0.0-rc2的，现在改成dubbo-go/v3@v3.0.1
+		span, ctx, _ = cf.tracer.CreateEntrySpan(ctx, operationName, func() (string, error) {
+			return invocation.GetAttachmentWithDefaultValue(propagation.Header, ""), nil
 		})
 
 		span.SetComponent(componentID)
@@ -160,7 +170,7 @@ func (cf tracingFilter) Invoke(ctx context.Context, invoker protocol.Invoker, in
 	}
 
 	// other tags ...
-	span.SetSpanLayer(agentv3.SpanLayer_RPCFramework)
+	span.SetSpanLayer(agentv2.SpanLayer_RPCFramework)
 
 	result := invoker.Invoke(ctx, invocation)
 

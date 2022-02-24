@@ -23,12 +23,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/powerapm/go2sky"
 	"github.com/asim/go-micro/v3/client"
 	"github.com/asim/go-micro/v3/metadata"
 	"github.com/asim/go-micro/v3/registry"
 	"github.com/asim/go-micro/v3/server"
-	agentv3 "github.com/powerapm/go2sky/reporter/grpc/language-agent-v2"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/propagation"
+	commonv2 "github.com/powerapm/go2sky/reporter/grpc/common"
 )
 
 const (
@@ -58,10 +59,10 @@ func WithClientWrapperReportTags(reportTags ...string) ClientOption {
 // Call is used for client calls
 func (s *clientWrapper) Call(ctx context.Context, req client.Request, rsp interface{}, opts ...client.CallOption) error {
 	name := fmt.Sprintf("%s.%s", req.Service(), req.Endpoint())
-	span, err := s.sw.CreateExitSpan(ctx, name, req.Service(), func(key, value string) error {
+	span, err := s.sw.CreateExitSpan(ctx, name, req.Service(), func(value string) error {
 		mda, _ := metadata.FromContext(ctx)
 		md := metadata.Copy(mda)
-		md[key] = value
+		md[propagation.Header] = value
 		ctx = metadata.NewContext(ctx, md)
 		return nil
 	})
@@ -70,7 +71,7 @@ func (s *clientWrapper) Call(ctx context.Context, req client.Request, rsp interf
 	}
 
 	span.SetComponent(componentIDGoMicroClient)
-	span.SetSpanLayer(agentv3.SpanLayer_RPCFramework)
+	span.SetSpanLayer(commonv2.SpanLayer_RPCFramework)
 
 	defer span.End()
 	for _, k := range s.reportTags {
@@ -87,10 +88,10 @@ func (s *clientWrapper) Call(ctx context.Context, req client.Request, rsp interf
 // Stream is used streaming
 func (s *clientWrapper) Stream(ctx context.Context, req client.Request, opts ...client.CallOption) (client.Stream, error) {
 	name := fmt.Sprintf("%s.%s", req.Service(), req.Endpoint())
-	span, err := s.sw.CreateExitSpan(ctx, name, req.Service(), func(key, value string) error {
+	span, err := s.sw.CreateExitSpan(ctx, name, req.Service(), func(value string) error {
 		mda, _ := metadata.FromContext(ctx)
 		md := metadata.Copy(mda)
-		md[key] = value
+		md[propagation.Header] = value
 		ctx = metadata.NewContext(ctx, md)
 		return nil
 	})
@@ -99,7 +100,7 @@ func (s *clientWrapper) Stream(ctx context.Context, req client.Request, opts ...
 	}
 
 	span.SetComponent(componentIDGoMicroClient)
-	span.SetSpanLayer(agentv3.SpanLayer_RPCFramework)
+	span.SetSpanLayer(commonv2.SpanLayer_RPCFramework)
 
 	defer span.End()
 	for _, k := range s.reportTags {
@@ -117,10 +118,10 @@ func (s *clientWrapper) Stream(ctx context.Context, req client.Request, opts ...
 // Publish is used publish message to subscriber
 func (s *clientWrapper) Publish(ctx context.Context, p client.Message, opts ...client.PublishOption) error {
 	name := fmt.Sprintf("Pub to %s", p.Topic())
-	span, err := s.sw.CreateExitSpan(ctx, name, p.ContentType(), func(key, value string) error {
+	span, err := s.sw.CreateExitSpan(ctx, name, p.ContentType(), func(value string) error {
 		mda, _ := metadata.FromContext(ctx)
 		md := metadata.Copy(mda)
-		md[key] = value
+		md[propagation.Header] = value
 		ctx = metadata.NewContext(ctx, md)
 		return nil
 	})
@@ -129,7 +130,7 @@ func (s *clientWrapper) Publish(ctx context.Context, p client.Message, opts ...c
 	}
 
 	span.SetComponent(componentIDGoMicroClient)
-	span.SetSpanLayer(agentv3.SpanLayer_RPCFramework)
+	span.SetSpanLayer(commonv2.SpanLayer_RPCFramework)
 
 	defer span.End()
 	for _, k := range s.reportTags {
@@ -166,10 +167,10 @@ func NewCallWrapper(sw *go2sky.Tracer, reportTags ...string) client.CallWrapper 
 			}
 
 			name := fmt.Sprintf("%s.%s", req.Service(), req.Endpoint())
-			span, err := sw.CreateExitSpan(ctx, name, req.Service(), func(key, value string) error {
+			span, err := sw.CreateExitSpan(ctx, name, req.Service(), func(value string) error {
 				mda, _ := metadata.FromContext(ctx)
 				md := metadata.Copy(mda)
-				md[key] = value
+				md[propagation.Header] = value
 				ctx = metadata.NewContext(ctx, md)
 				return nil
 			})
@@ -178,7 +179,7 @@ func NewCallWrapper(sw *go2sky.Tracer, reportTags ...string) client.CallWrapper 
 			}
 
 			span.SetComponent(componentIDGoMicroClient)
-			span.SetSpanLayer(agentv3.SpanLayer_RPCFramework)
+			span.SetSpanLayer(commonv2.SpanLayer_RPCFramework)
 
 			defer span.End()
 			for _, k := range reportTags {
@@ -203,10 +204,10 @@ func NewSubscriberWrapper(sw *go2sky.Tracer, reportTags ...string) server.Subscr
 			}
 
 			name := "Sub from " + msg.Topic()
-			span, err := sw.CreateExitSpan(ctx, name, msg.ContentType(), func(key, value string) error {
+			span, err := sw.CreateExitSpan(ctx, name, msg.ContentType(), func(value string) error {
 				mda, _ := metadata.FromContext(ctx)
 				md := metadata.Copy(mda)
-				md[key] = value
+				md[propagation.Header] = value
 				ctx = metadata.NewContext(ctx, md)
 				return nil
 			})
@@ -215,7 +216,7 @@ func NewSubscriberWrapper(sw *go2sky.Tracer, reportTags ...string) server.Subscr
 			}
 
 			span.SetComponent(componentIDGoMicroClient)
-			span.SetSpanLayer(agentv3.SpanLayer_RPCFramework)
+			span.SetSpanLayer(commonv2.SpanLayer_RPCFramework)
 
 			defer span.End()
 			for _, k := range reportTags {
@@ -240,8 +241,8 @@ func NewHandlerWrapper(sw *go2sky.Tracer, reportTags ...string) server.HandlerWr
 			}
 
 			name := fmt.Sprintf("%s.%s", req.Service(), req.Endpoint())
-			span, ctx, err := sw.CreateEntrySpan(ctx, name, func(key string) (string, error) {
-				str, _ := metadata.Get(ctx, strings.Title(key))
+			span, ctx, err := sw.CreateEntrySpan(ctx, name, func() (string, error) {
+				str, _ := metadata.Get(ctx, strings.Title(propagation.Header))
 				return str, nil
 			})
 			if err != nil {
@@ -249,7 +250,7 @@ func NewHandlerWrapper(sw *go2sky.Tracer, reportTags ...string) server.HandlerWr
 			}
 
 			span.SetComponent(componentIDGoMicroServer)
-			span.SetSpanLayer(agentv3.SpanLayer_RPCFramework)
+			span.SetSpanLayer(commonv2.SpanLayer_RPCFramework)
 
 			defer span.End()
 			for _, k := range reportTags {

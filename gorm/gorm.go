@@ -22,8 +22,8 @@ import (
 	"time"
 
 	"github.com/powerapm/go2sky"
+	agentv2 "github.com/powerapm/go2sky/reporter/grpc/common"
 	"gorm.io/gorm"
-	agentv3 "github.com/powerapm/go2sky/reporter/grpc/language-agent-v2"
 )
 
 var (
@@ -92,7 +92,7 @@ func (s *SkyWalking) BeforeCallback(operation string) func(db *gorm.DB) {
 		tableName := db.Statement.Table
 		operation := fmt.Sprintf("%s/%s", tableName, operation)
 
-		span, err := tracer.CreateExitSpan(db.Statement.Context, operation, peer, func(key, value string) error {
+		span, err := tracer.CreateExitSpan(db.Statement.Context, operation, peer, func(value string) error {
 			return nil
 		})
 		if err != nil {
@@ -126,7 +126,7 @@ func (s *SkyWalking) AfterCallback() func(db *gorm.DB) {
 		err := db.Statement.Error
 
 		span.SetComponent(s.opts.componentID)
-		span.SetSpanLayer(agentv3.SpanLayer_Database)
+		span.SetSpanLayer(agentv2.SpanLayer_Database)
 		span.Tag(go2sky.TagDBType, string(s.opts.dbType))
 		span.Tag(go2sky.TagDBInstance, s.opts.peer)
 

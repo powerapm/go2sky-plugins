@@ -21,9 +21,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/powerapm/go2sky"
 	"github.com/emicklei/go-restful/v3"
-	agentv3 "github.com/powerapm/go2sky/reporter/grpc/language-agent-v2"
+	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/propagation"
+	agentv2 "github.com/powerapm/go2sky/reporter/grpc/common"
 )
 
 const componentIDGOHttpServer = 5004
@@ -38,8 +39,12 @@ func NewTraceFilterFunction(tracer *go2sky.Tracer) restful.FilterFunction {
 
 	return func(request *restful.Request, response *restful.Response, chain *restful.FilterChain) {
 		span, ctx, err := tracer.CreateEntrySpan(request.Request.Context(),
-			fmt.Sprintf("/%s%s", request.Request.Method, request.SelectedRoutePath()), func(key string) (string, error) {
-				return request.HeaderParameter(key), nil
+			// fmt.Sprintf("/%s%s", request.Request.Method, request.SelectedRoutePath()), func(key string) (string, error) {
+			// 	return request.HeaderParameter(propagation.Header), nil
+			// })
+			// 修改为v2协议
+			fmt.Sprintf("/%s%s", request.Request.Method, request.SelectedRoutePath()), func() (string, error) {
+				return request.HeaderParameter(propagation.Header), nil
 			})
 
 		if err != nil {
@@ -50,7 +55,7 @@ func NewTraceFilterFunction(tracer *go2sky.Tracer) restful.FilterFunction {
 		span.SetComponent(componentIDGOHttpServer)
 		span.Tag(go2sky.TagHTTPMethod, request.Request.Method)
 		span.Tag(go2sky.TagURL, request.Request.Host+request.Request.URL.Path)
-		span.SetSpanLayer(agentv3.SpanLayer_Http)
+		span.SetSpanLayer(agentv2.SpanLayer_Http)
 		request.Request = request.Request.WithContext(ctx)
 		defer func() {
 			code := response.StatusCode()

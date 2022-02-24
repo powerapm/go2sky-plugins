@@ -13,7 +13,7 @@ package main
 import (
 	"log"
 
-	"github.com/powerapm/go2sky"
+"github.com/powerapm/go2sky"
 	v3 "github.com/powerapm/go2sky-plugins/gin/v3"
 	"github.com/powerapm/go2sky/reporter"
 	"github.com/gin-gonic/gin"

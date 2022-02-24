@@ -6,10 +6,6 @@ The plugins of [go2sky](https://github.com/powerapm/go2sky)
 
 ## Plugin Summary
 
-### Reporter Plugins
-
-1. [kafkareporter](kafkareporter/README.md)
-
 ### Trace Plugins
 
 1. [http server & client](http/README.md)
@@ -23,10 +19,6 @@ The plugins of [go2sky](https://github.com/powerapm/go2sky)
 1. [dubbo-go](dubbo-go/README.md)
 1. [gorm](gorm/README.md)
 
-### Log Plugins
-
-1. [logrus](logrus/README.md)
-1. [zap](zap/README.md)
 
 # Contact Us
 * Twitter, [ASFSkyWalking](https://twitter.com/ASFSkyWalking)

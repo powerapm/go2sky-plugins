@@ -30,9 +30,9 @@ import (
 	_ "dubbo.apache.org/dubbo-go/v3/protocol/dubbo"
 	_ "dubbo.apache.org/dubbo-go/v3/registry/protocol"
 	_ "dubbo.apache.org/dubbo-go/v3/registry/zookeeper"
+	hessian "github.com/apache/dubbo-go-hessian2"
 	"github.com/powerapm/go2sky"
 	"github.com/powerapm/go2sky/reporter"
-	hessian "github.com/apache/dubbo-go-hessian2"
 
 	dubbogo "github.com/powerapm/go2sky-plugins/dubbo-go"
 	"github.com/powerapm/go2sky-plugins/dubbo-go/test/client/pkg"

@@ -22,8 +22,9 @@ import (
 	"time"
 
 	"github.com/powerapm/go2sky"
+	"github.com/powerapm/go2sky/propagation"
+	commonv2 "github.com/powerapm/go2sky/reporter/grpc/common"
 	"github.com/teambition/gear"
-	agentv3 "github.com/powerapm/go2sky/reporter/grpc/language-agent-v2"
 )
 
 const componentIDGearServer = 5007
@@ -35,8 +36,8 @@ func Middleware(tracer *go2sky.Tracer) gear.Middleware {
 			return nil
 		}
 
-		span, _, err := tracer.CreateEntrySpan(ctx, operationName(ctx), func(key string) (string, error) {
-			return ctx.GetHeader(key), nil
+		span, _, err := tracer.CreateEntrySpan(ctx, operationName(ctx), func() (string, error) {
+			return ctx.GetHeader(propagation.Header), nil
 		})
 		if err != nil {
 			return nil
@@ -45,7 +46,7 @@ func Middleware(tracer *go2sky.Tracer) gear.Middleware {
 		span.SetComponent(componentIDGearServer)
 		span.Tag(go2sky.TagHTTPMethod, ctx.Method)
 		span.Tag(go2sky.TagURL, ctx.Host+ctx.Path)
-		span.SetSpanLayer(agentv3.SpanLayer_Http)
+		span.SetSpanLayer(commonv2.SpanLayer_Http)
 
 		ctx.OnEnd(func() {
 			code := ctx.Res.Status()
