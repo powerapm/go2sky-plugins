@@ -29,12 +29,14 @@ import (
 )
 
 const (
-	componentIDUnknown = 0
-	componentIDMysql   = 5012
+	componentIDUnknown  = 0
+	componentIDMysql    = 5012
+	componentIDOtherSql = 5999
 )
 
 // ErrUnsupportedOp operation unsupported by the underlying driver
 var ErrUnsupportedOp = errors.New("operation unsupported by the underlying driver")
+var ErrGetDatabaseNameOp = errors.New("get database name operation unsupported")
 
 func argsToString(args []interface{}) string {
 	sb := strings.Builder{}
@@ -56,7 +58,7 @@ func createSpan(ctx context.Context, tracer *go2sky.Tracer, opts *options, opera
 	s.SetComponent(opts.componentID)
 	s.SetSpanLayer(agentv2.SpanLayer_Database)
 	s.Tag(go2sky.TagDBType, string(opts.dbType))
-	s.Tag(go2sky.TagDBInstance, opts.peer)
+	s.Tag(go2sky.TagDBInstance, opts.dbName)
 	return s, nil
 }
 
@@ -75,4 +77,21 @@ func parseDsn(dbType DBType, dsn string) string {
 		addr = re.FindString(dsn)
 	}
 	return addr
+}
+
+func getDatabaseFromDsn(dbType DBType, dsn string) (databaseName string, err error) {
+	switch dbType {
+	case MYSQL:
+		// [user[:password]@][net[(addr)]]/dbname[?param1=value1&paramN=valueN]
+		index := strings.Index(dsn, "/")
+		if index == -1 {
+			return "unkownDataBase", ErrGetDatabaseNameOp
+		}
+		databaseName = dsn[index:]
+	case IPV4:
+		// ipv4 addr
+		re := regexp.MustCompile(`((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})(\.((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})){3}:\d{1,5}`)
+		databaseName = re.FindString(dsn)
+	}
+	return databaseName, nil
 }

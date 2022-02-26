@@ -74,6 +74,15 @@ func Open(driverName, dataSourceName string, tracer *go2sky.Tracer, opts ...Opti
 	if options.peer == "" {
 		options.peer = parseDsn(options.dbType, dataSourceName)
 	}
+	//2022-02-25 huangyao 添加数据库信息，如果获取不到则取peer(即 IP：port)
+	if options.dbName == "" {
+		databaseName, err := getDatabaseFromDsn(options.dbType, dataSourceName)
+		if err != nil {
+			options.dbName = options.peer
+		} else {
+			options.dbName = databaseName
+		}
+	}
 
 	return &DB{
 		DB:     db,
