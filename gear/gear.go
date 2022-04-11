@@ -35,8 +35,10 @@ func Middleware(tracer *go2sky.Tracer) gear.Middleware {
 		if tracer == nil {
 			return nil
 		}
-
-		span, _, err := tracer.CreateEntrySpan(ctx, operationName(ctx), func() (string, error) {
+		//2022-04-06 黄尧 创建entrySpan时传递ctx.Context()作为上下文信息传递，
+		//使得传入的类型统一为context.Context,方便结尾出ctx.WithContext(nCtx)的赋值（否则会报错）
+		// span, nCtx, err := tracer.CreateEntrySpan(ctx, operationName(ctx), func() (string, error) {
+		span, nCtx, err := tracer.CreateEntrySpan(ctx.Context(), operationName(ctx), func() (string, error) {
 			return ctx.GetHeader(propagation.Header), nil
 		})
 		if err != nil {
@@ -56,6 +58,8 @@ func Middleware(tracer *go2sky.Tracer) gear.Middleware {
 			}
 			span.End()
 		})
+		//2022-04-06 黄尧 将上下文信息存放到request和gearContext的ctx信息中，方便后续调用流程获取进行传递(将链路串起来)
+		ctx.WithContext(nCtx)
 		return nil
 	}
 }

@@ -41,7 +41,7 @@ func New(tracer *go2sky.Tracer, opts ...Option) *SkyWalking {
 	options := &options{
 		dbType:      UNKNOWN,
 		componentID: componentIDUnknown,
-		peer:        "unknown",
+		peer:        "unknown(go)",
 		reportQuery: false,
 		reportParam: false,
 	}
@@ -127,6 +127,7 @@ func (s *SkyWalking) AfterCallback() func(db *gorm.DB) {
 
 		span.SetComponent(s.opts.componentID)
 		span.SetSpanLayer(agentv2.SpanLayer_Database)
+		span.SetPeer(s.opts.peer)
 		span.Tag(go2sky.TagDBType, string(s.opts.dbType))
 		span.Tag(go2sky.TagDBInstance, s.opts.peer)
 

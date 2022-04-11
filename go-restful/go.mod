@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/emicklei/go-restful/v3 v3.7.3
-	github.com/powerapm/go2sky v1.3.17
+	github.com/powerapm/go2sky v1.3.19
 )
 
 require (

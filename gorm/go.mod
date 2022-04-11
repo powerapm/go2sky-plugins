@@ -3,7 +3,7 @@ module github.com/powerapm/go2sky-plugins/gorm
 go 1.17
 
 require (
-	github.com/powerapm/go2sky v1.3.17
+	github.com/powerapm/go2sky v1.3.19
 	gorm.io/driver/mysql v1.3.2
 	gorm.io/gorm v1.23.1
 )

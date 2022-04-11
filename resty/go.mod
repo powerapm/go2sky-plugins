@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/go-resty/resty/v2 v2.7.0
-	github.com/powerapm/go2sky v1.3.17
+	github.com/powerapm/go2sky v1.3.19
 )
 
 require (

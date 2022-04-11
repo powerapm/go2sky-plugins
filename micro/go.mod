@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/asim/go-micro/v3 v3.7.1
-	github.com/powerapm/go2sky v1.3.17
+	github.com/powerapm/go2sky v1.3.19
 )
 
 require (

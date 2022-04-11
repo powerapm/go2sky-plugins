@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/go-kratos/kratos/examples v0.0.0-20210806031717-e5ae8dc3f1f4
 	github.com/go-kratos/kratos/v2 v2.0.4-0.20210806031717-e5ae8dc3f1f4
-	github.com/powerapm/go2sky v1.3.17
+	github.com/powerapm/go2sky v1.3.19
 )
 
 require (

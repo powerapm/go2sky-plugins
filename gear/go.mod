@@ -3,11 +3,12 @@ module github.com/powerapm/go2sky-plugins/gear
 go 1.17
 
 require (
-	github.com/powerapm/go2sky v1.3.17
+	github.com/powerapm/go2sky v1.3.19
 	github.com/teambition/gear v1.25.1
 )
 
 require (
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/go-http-utils/cookie v1.3.1 // indirect
 	github.com/go-http-utils/negotiator v1.0.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
